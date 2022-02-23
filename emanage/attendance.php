@@ -15,14 +15,15 @@ include('db.php');
 
     <div class="container">
     <form action="attendance_check.php" method="POST">
+    
+    Date: <input type="date" name="date" value="<?php echo date("Y-m-d"); ?>" class="bg-secondary text-center w-100">
+                        
     <table class="table border border-2 ">
     <thead>
         <tr >
         <th class="bg-primary text-center border border-2" scope="col">NAME</th>
-        <th class="bg-primary text-center border border-2" scope="col">ID</th>
         <th class="bg-primary text-center border border-2" scope="col">CHECK IN TIME</th>
         <th class="bg-primary text-center border border-2" scope="col">CHECK OUT TIME</th>
-        <th class="bg-primary text-center border border-2" scope="col">DATE</th>
         <th class="bg-primary text-center border border-2" scope="col">ATTENDENCE</th>
         </tr>
     </thead>
@@ -39,21 +40,17 @@ include('db.php');
             while($row = mysqli_fetch_assoc($result)) {
               echo "
                     <tr>
-                        <td class='border border-2'>$row[name]</td>
-                        <td class='border border-2 mx-auto '>
-                        <input type='text' name='id[]' class='bg-secondary text-center w-100' value='$row[id]'>
+                        <td class='border border-2'>
+                            $row[name]
                         </td>
                         <td class='border border-2 mx-auto '>
-                        <input type='time' name='check_in[]' class='bg-secondary text-center w-100' value='".date('H:i')."' >
+                            <input type='time' name='check_in[$row[id]]' class='bg-secondary text-center w-100' value='".date('H:i')."' >
                         </td>
                         <td class='border border-2 mx-auto'>
-                        <input type='time' class='bg-secondary text-center w-100'   name='check_out[]' value='".date('H:i')."' >
+                            <input type='time' class='bg-secondary text-center w-100'   name='check_out[$row[id]]' value='".date('H:i')."' >
                         </td>
                         <td class='border border-2 mx-auto'>
-                        <input type='Date' name='date[]' value='".date ("Y-m-d")."' class='bg-secondary text-center w-100' >
-                        </td>
-                        <td class='border border-2 mx-auto'>
-                        <input type='checkbox' class='bg-secondary text-center mx-auto' value='1' name='id[$row[id]]' >
+                            <input type='checkbox' class='bg-secondary text-center mx-auto' value=$row[id] name='id[$row[id]]' >
                         </td>
                     </tr> 
               ";

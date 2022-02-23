@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 23, 2022 at 03:57 PM
+-- Generation Time: Feb 23, 2022 at 05:58 PM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 7.4.27
 
@@ -37,6 +37,14 @@ CREATE TABLE `attendance` (
   `status` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `attendance`
+--
+
+INSERT INTO `attendance` (`attendance_id`, `check_in`, `check_out`, `time_duration`, `employee_id`, `date`, `status`) VALUES
+(1, '17:54', '17:54', '', 9, '2022-02-23', ''),
+(2, '17:54', '17:54', '', 15, '2022-02-23', '');
+
 -- --------------------------------------------------------
 
 --
@@ -56,10 +64,10 @@ CREATE TABLE `employee_info` (
 --
 
 INSERT INTO `employee_info` (`id`, `name`, `email`, `password`, `usertype`) VALUES
-(1, 'Atik', 'hr@dorjie.com', '123', 'admin'),
-(2, 'abc', 'abc@gmail.com', '123', 'user'),
-(3, 'Zibran', 'zibran@gmail.com', '123', 'user'),
-(4, 'Nooray yemon', 'admin@gmail.com', '123', 'admin');
+(6, 'Atik', 'hr@dorjie.com', '123', 'admin'),
+(9, 'abc', 'abc@gmail.com', '123', 'user'),
+(12, 'Zibran', 'zibran@gmail.com', '123', 'user'),
+(15, 'Nooray yemon', 'admin@gmail.com', '123', 'admin');
 
 --
 -- Indexes for dumped tables
@@ -85,13 +93,13 @@ ALTER TABLE `employee_info`
 -- AUTO_INCREMENT for table `attendance`
 --
 ALTER TABLE `attendance`
-  MODIFY `attendance_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `attendance_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `employee_info`
 --
 ALTER TABLE `employee_info`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -14,5 +14,6 @@
           mysqli_query($conn, $sql);
 
         }
+        header('Location: attendance.php');
     }
 ?>  

@@ -17,20 +17,20 @@ include_once('header.php')
     <section class="container">
         <div class="row">
             <div class="my-2 mx-md-5 p-3 border border-1 border-secondary rounded col-md-5 col-sm-12">
-                <form action="checkDateWIse.php" method="POST"class="px-md-5">
+                <form action="checkDateWIse.php" method="POST" class="px-md-5">
                     Date from:
                     <input type="date" name="fromDate" id="">
                     <br>
                     Date to:
                     <input type="date" name="toDate" id="">
                     <br>
-                    <input class="btn btn-outline-primary px-3" type="submit" value="Find">
+                    <input class="btn btn-outline-primary px-3" type="submit" name="submit" value="Find">
                 </form>
             </div>
             <div class="my-2 mx-md-5 p-3 border border-1 border-secondary rounded col-md-5 col-sm-12">
-            <form action="">
+            <form action="checkemployeeWise.php" method="POST">
                     Employee name:
-                    <select name="cars" id="cars">
+                    <select name="name" id="name">
                 <?php
                 $sql = 'SELECT * FROM employee_info';
                 $result = $conn->query($sql);
@@ -40,7 +40,7 @@ include_once('header.php')
                 else{
                     while($row = $result->fetch_assoc()) {
                         echo "
-                        <option value='".$row["id"]."' name='name[]' >".$row["name"]."</option>";
+                        <option value='".$row["id"]."' name='id[$row[id]]' >".$row["name"]."</option>";
                       
                     }
             

@@ -16,7 +16,7 @@ include('header.php');
 if($_SERVER['REQUEST_METHOD'] == 'POST'){
     $dateFrom =$_POST['fromDate'];
     $dateTo =$_POST['toDate'];
-    $sql = "SELECT * FROM employee_info INNER JOIN attendance WHERE attendance.date BETWEEN '$dateFrom' AND '$dateTo'";
+    $sql = "SELECT * FROM employee_info, attendance WHERE attendance.employee_id = employee_info.id AND attendance.date BETWEEN '$dateFrom' AND '$dateTo'";
     $result = $conn->query($sql);
     function timeDiff($firstTime,$lastTime){
         // convert to unix timestamps
@@ -31,8 +31,8 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
     if($result){
         if ($result->num_rows> 0) {
         while($row = $result->fetch_assoc()){
-            // echo timeDiff($row["check_in"], $row["check_out"]);
-            // echo "<br>";
+            // print_r($row);
+
             $timeDiff = timeDiff($row['check_in'],$row['check_out']);
             echo "
             <tr>

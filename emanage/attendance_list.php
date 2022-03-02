@@ -40,7 +40,7 @@ include_once('header.php')
                 else{
                     while($row = $result->fetch_assoc()) {
                         echo "
-                        <option value='".$row["id"]."' name='id[$row[id]]' >".$row["name"]."</option>";
+                        <option value='".$row["id"]."' name='' >".$row["name"]."</option>";
                       
                     }
             

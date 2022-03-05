@@ -31,7 +31,7 @@
           Leave Management
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" href="leaveApplication.php">Leave Application</a></li>
+            <li><a class="dropdown-item" href="leavePermit.php">Leave Permit</a></li>
             <li><a class="dropdown-item" href="#">Remainning Leave</a></li>
           </ul>
         </li>

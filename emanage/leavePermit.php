@@ -62,7 +62,7 @@ include_once('header.php');
                     <input class="form-select form-select-lg mb-3 " type="date" name="dateTo" id="">
                 </div>
                 <div class="col-md-2">
-                    <select name="leave_dt_to_fn" class="form-select" aria-label="Default select example">
+                    <select name="leave_dt_to_fh" class="form-select" aria-label="Default select example">
                         <option selected></option>
                         <option value="half">half</option>
                         <option value="Full">Full</option>

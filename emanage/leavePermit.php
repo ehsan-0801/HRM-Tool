@@ -80,6 +80,7 @@ include_once('header.php');
                         <option value="Casual Leave">Casual Leave</option>
                         <option value="Medical Leave">Medical Leave</option>
                         <option value="Paid Leave">Paid Leave</option>
+                        <option value="Paid Leave">Festival Leave</option>
                         <option value="Other">Other</option>
                     </select>
                 </div>

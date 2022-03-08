@@ -64,9 +64,32 @@ include_once('header.php')
             </form>
         </div>
         <div>
-
+            <form action="monthWiseLeave.php" method="POST">
+                <fieldset>
+                    <div class="input-group w-25 mb-3 col-md-6 col-sm-12">
+                        <legend class="fs-5 fw-bold text-success text-center">Month Wise Record</legend>
+                        <select class="form-select" name="month" id="inputGroupSelect03" aria-label="Example select with button addon">
+                            <option selected>Choose Your Month...</option>
+                            <option value="1">January</option>
+                            <option value="2">February</option>
+                            <option value="3">March</option>
+                            <option value="3">April</option>
+                            <option value="3">May</option>
+                            <option value="3">June</option>
+                            <option value="3">July</option>
+                            <option value="3">August</option>
+                            <option value="3">September</option>
+                            <option value="3">October</option>
+                            <option value="3">November</option>
+                            <option value="3">December</option>
+                        </select>
+                        <button class="btn btn-outline-primary" type="button">Search</button>
+                    </div>
+                </fieldset>
+            </form>
         </div>
         <div>
+            <h2 class="text-primary fs-3 fw-bold">Current Month Update</h2>
             <table class="table table-dark table-striped table-hover my-5">
                 <thead>
                     <tr>

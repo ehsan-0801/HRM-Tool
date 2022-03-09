@@ -66,24 +66,51 @@ include_once('header.php')
         <div>
             <form action="monthWiseLeave.php" method="POST">
                 <fieldset>
-                    <div class="input-group w-25 mb-3 col-md-6 col-sm-12">
+                    <div class="input-group w-50 mb-3 col-md-6 col-sm-12">
                         <legend class="fs-5 fw-bold text-success text-center">Month Wise Record</legend>
                         <select class="form-select" name="month" id="inputGroupSelect03" aria-label="Example select with button addon">
                             <option selected>Choose Your Month...</option>
-                            <option value="1">January</option>
-                            <option value="2">February</option>
-                            <option value="3">March</option>
-                            <option value="3">April</option>
-                            <option value="3">May</option>
-                            <option value="3">June</option>
-                            <option value="3">July</option>
-                            <option value="3">August</option>
-                            <option value="3">September</option>
-                            <option value="3">October</option>
-                            <option value="3">November</option>
-                            <option value="3">December</option>
+                            <option value="January">January</option>
+                            <option value="February">February</option>
+                            <option value="March">March</option>
+                            <option value="April">April</option>
+                            <option value="May">May</option>
+                            <option value="June">June</option>
+                            <option value="July">July</option>
+                            <option value="August">August</option>
+                            <option value="September">September</option>
+                            <option value="October">October</option>
+                            <option value="November">November</option>
+                            <option value="December">December</option>
                         </select>
-                        <button class="btn btn-outline-primary" type="button">Search</button>
+                        <select class="form-select" name="year" id="inputGroupSelect03" aria-label="Example select with button addon">
+                            <option selected>Choose Your Year...</option>
+                            <option value="2019">2019</option>
+                            <option value="2020">2020</option>
+                            <option value="2021">2021</option>
+                            <option value="2022" selected>2022</option>
+                            <option value="2023">2023</option>
+                            <option value="2024">2024</option>
+                            <option value="2025">2025</option>
+                            <option value="2026">2026</option>
+                            <option value="2027">2027</option>
+                            <option value="2028">2028</option>
+                            <option value="2029">2029</option>
+                            <option value="2030">2030</option>
+                            <option value="2031">2031</option>
+                            <option value="2032">2032</option>
+                            <option value="2033">2033</option>
+                            <option value="2034">2034</option>
+                            <option value="2035">2035</option>
+                            <option value="2036">2036</option>
+                            <option value="2037">2037</option>
+                            <option value="2038">2038</option6>
+                            <option value="2039">2039</option>
+                            <option value="2040">2040</option>
+                            <option value="2041">2041</option>
+                            <option value="2042">2042</option>
+                        </select>
+                        <input type="submit" value="Search" class="btn btn-outline-primary">
                     </div>
                 </fieldset>
             </form>

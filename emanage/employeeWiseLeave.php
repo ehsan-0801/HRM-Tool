@@ -4,7 +4,7 @@ include('header.php');
 ?>
 <h1></h1>
 <div class="container">
-    <table class="table table-info table-striped table-hover my-5">
+    <table class="table table-success table-striped table-hover my-5">
         <thead>
             <tr>
                 <th scope="col">Name</th>
@@ -53,12 +53,16 @@ include('header.php');
                                 $leave_taken = .5;
                             }
                         }
-                        echo $leave_taken;
                         if ($new_name) {
                             $name = "<td class='px-5 py-3 border border-1 border-secondary rounded' rowspan='$row_count'>
                       $row[name]
                     </td>";
                             $new_name = false;
+                        }
+                        if ($leave_taken == 0) {
+                            $total_leave = 0;
+                        } else {
+                            $total_leave = $total_leave + $leave_taken;
                         }
 
                         echo "
@@ -79,12 +83,11 @@ include('header.php');
                                 <td class='px-5 py-3 border border-1 border-secondary rounded'>$leave_taken</td>
                                 
                             </tr>
+                            
                             ";
 
                         $name = '';
                     }
-                    $total_leave = $total_leave + $leave_taken;
-                    echo $total_leave;
                 } else {
                     echo "No record found";
                 }
@@ -92,10 +95,19 @@ include('header.php');
                 echo "Error in " . $query . "<br>" . $conn->error;
             }
         }
+        echo "<tr>
+                                
+                                <td class='px-5 py-3 border border-1 border-secondary rounded' colspan='5'>
+                                
+                                </td>
+                                <td class='px-5 py-3 border border-1 border-secondary rounded'>
+                                <span class='fw-bold text-primary'>TOTAL:</span> $total_leave
+                                </td>
+                            </tr>";
         ?>
+
     </table>
-    <span>Leave Taken in Total: </span><?php echo $total_leave ?>
 </div>
 <?php
 include('footer.php')
-?>a
+?>

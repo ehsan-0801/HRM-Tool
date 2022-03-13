@@ -2,7 +2,6 @@
 include('db.php');
 include('header.php');
 ?>
-<h1></h1>
 <div class="container">
     <table class="table table-success table-striped table-hover my-5">
         <thead>
@@ -28,9 +27,10 @@ include('header.php');
             $new_name = true;
 
             if ($result) {
+                $total_leave = 0;
                 if ($result->num_rows > 0) {
                     $row_count = $result->num_rows;
-                    $total_leave = 0;
+
                     while ($row = $result->fetch_assoc()) {
 
                         $leave_taken = date_diff(
@@ -59,11 +59,7 @@ include('header.php');
                     </td>";
                             $new_name = false;
                         }
-                        if ($leave_taken == 0) {
-                            $total_leave = 0;
-                        } else {
-                            $total_leave = $total_leave + $leave_taken;
-                        }
+
 
                         echo "
                             <tr>
@@ -88,13 +84,19 @@ include('header.php');
 
                         $name = '';
                     }
+                    if ($leave_taken == 0) {
+                        $total_leave = $leave_taken;
+                    } else {
+                        $total_leave = $total_leave + $leave_taken;
+                    }
                 } else {
-                    echo "No record found";
+                    echo $total_leave, " leave taken";
                 }
             } else {
                 echo "Error in " . $query . "<br>" . $conn->error;
             }
         }
+
         echo "<tr>
                                 
                                 <td class='px-5 py-3 border border-1 border-secondary rounded' colspan='5'>
@@ -106,6 +108,133 @@ include('header.php');
                             </tr>";
         ?>
 
+    </table>
+    <table class="table table-info table-striped table-hover my-5 w-50 mx-auto">
+
+        <tbody>
+            <?php
+            $sql = "SELECT * FROM leave_manage,employee_info WHERE leave_manage.employee_id = '$id' AND leave_manage.employee_id = employee_info.id";
+            $result = $conn->query($sql);
+            $total_medical_leave = 14.00;
+            $total_casual_leave = 10.00;
+            $total_Festival_leave = 10.00;
+            $medical_leave = 0;
+            $casual_leave = 0;
+            $Festival_leave = 0;
+            $Other = 0;
+
+            if (mysqli_num_rows($result) < 0) {
+                echo "No records found";
+            } else {
+                while ($row = $result->fetch_assoc()) {
+
+                    if ($row['reason'] == 'Medical Leave') {
+                        $leave_taken_medical = date_diff(
+                            date_create($row['leave_dt_to']),
+                            date_create($row['leave_dt_from'])
+                        );
+                        $leave_taken_medical = 1 + $leave_taken_medical->format('%a');
+                        if ($row['leave_dt_from_fh'] == "Half")
+                            $leave_taken_medical -= 0.5;
+
+                        if ($row['leave_dt_to_fh'] == "Half")
+                            $leave_taken_medical -= 0.5;
+
+                        if ($row['leave_dt_to'] == $row['leave_dt_from']) {
+                            if ($row['leave_dt_from_fh'] == "Full" || $row['leave_dt_to_fh'] == "Full") {
+                                $leave_taken_medical = 1;
+                            } elseif ($row['leave_dt_from_fh'] == "Half" || $row['leave_dt_to_fh'] == "Half") {
+                                $leave_taken_medical = .5;
+                            }
+                        }
+
+
+                        $medical_leave +=
+                            $leave_taken_medical;
+                    }
+                    if ($row['reason'] == 'Casual Leave') {
+                        $leave_taken_casual = date_diff(
+                            date_create($row['leave_dt_to']),
+                            date_create($row['leave_dt_from'])
+                        );
+                        $leave_taken_casual = 1 + $leave_taken_casual->format('%a');
+                        if ($row['leave_dt_from_fh'] == "Half")
+                            $leave_taken_casual -= 0.5;
+
+                        if ($row['leave_dt_to_fh'] == "Half")
+                            $leave_taken_casual -= 0.5;
+
+                        if ($row['leave_dt_to'] == $row['leave_dt_from']) {
+                            if ($row['leave_dt_from_fh'] == "Full" || $row['leave_dt_to_fh'] == "Full") {
+                                $leave_taken_casual = 1;
+                            } elseif ($row['leave_dt_from_fh'] == "Half" || $row['leave_dt_to_fh'] == "Half") {
+                                $leave_taken_casual = .5;
+                            }
+                        }
+
+
+                        $casual_leave +=
+                            $leave_taken_casual;
+                    }
+                    if ($row['reason'] == 'Festival leave') {
+                        $leave_taken_festival = date_diff(
+                            date_create($row['leave_dt_to']),
+                            date_create($row['leave_dt_from'])
+                        );
+                        $leave_taken_festival = 1 + $leave_taken_festival->format('%a');
+                        if ($row['leave_dt_from_fh'] == "Half")
+                            $leave_taken_festival -= 0.5;
+
+                        if ($row['leave_dt_to_fh'] == "Half")
+                            $leave_taken_festival -= 0.5;
+
+                        if ($row['leave_dt_to'] == $row['leave_dt_from']) {
+                            if ($row['leave_dt_from_fh'] == "Full" || $row['leave_dt_to_fh'] == "Full") {
+                                $leave_taken_festival = 1;
+                            } elseif ($row['leave_dt_from_fh'] == "Half" || $row['leave_dt_to_fh'] == "Half") {
+                                $leave_taken_festival = .5;
+                            }
+                        }
+
+
+                        $Festival_leave +=
+                            $leave_taken_festival;
+                    }
+                    if ($row['reason'] == 'Other') {
+                        $Other++;
+                    }
+                }
+                $total_medical_leave = $total_medical_leave - $medical_leave;
+                $total_casual_leave = $total_casual_leave - $casual_leave;
+                $total_Festival_leave = $total_Festival_leave - $Festival_leave;
+
+                echo "
+                <thead>
+            <tr>
+                <th scope='col' class='text-center text-primary'>Leave Type</th>
+                <th scope='col' class='text-center text-primary'>Remaining Leave</th>
+            </tr>
+        </thead>
+                  <tr>
+                <th scope='row' class='text-center'>Medical Leave</th>
+                <td class='text-center'>$total_medical_leave</td>
+            </tr>
+                  <tr>
+                <th scope='row' class='text-center'>Casual Leave</th>
+                <td class='text-center'>$total_casual_leave</td>
+            </tr>
+            </tr>
+                  <tr>
+                <th scope='row' class='text-center'>Festival Leave</th>
+                <td class='text-center'>$total_Festival_leave</td>
+            </tr>
+                ";
+            }
+            ?>
+
+
+
+        </tbody>
     </table>
 </div>
 <?php

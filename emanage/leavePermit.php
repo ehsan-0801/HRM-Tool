@@ -17,7 +17,7 @@ include_once('header.php');
 
 <body>
     <div class="container w-50 bg-secondary p-5 my-4">
-        <h2 class="fs-1 fw-bold text-primary text-center">Leave Application</h2>
+        <h2 class="fs-1 fw-bold text-primary text-center">Leave Entry of Employee</h2>
         <form action="leavePermitCheck.php" method="POST">
             <div class="row my-3">
                 <div class="col-md-4">
@@ -109,6 +109,14 @@ include_once('header.php');
             </div>
         </form>
     </div>
+    <?php
+    $sql = "SELECT * FROM employee_info,leave_manage WHERE employee_info.id = leave_manage.employee_id";
+    $result = $conn->query($sql);
+    if (mysqli_num_rows($result) < 0) {
+        echo "No records found";
+    }
+
+    ?>
 
 </body>
 

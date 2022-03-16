@@ -71,15 +71,14 @@ include_once('header.php');
             </div>
             <div class="row my-3">
                 <div class="col-md-4">
-                    <label for="exampleInputReason" class="form-label fs-3">Reason: </label>
+                    <label for="exampleInputReason" class="form-label fs-3">Type: </label>
                 </div>
                 <div class="col-md-8">
-                    <select name="reason" class="form-select" aria-label="Default select example">
+                    <select name="type" class="form-select" aria-label="Default select example">
                         <option selected></option>
                         <option value=""></option>
                         <option value="Casual Leave">Casual Leave</option>
                         <option value="Medical Leave">Medical Leave</option>
-                        <option value="Paid Leave">Paid Leave</option>
                         <option value="Paid Leave">Festival Leave</option>
                         <option value="Other">Other</option>
                     </select>
@@ -109,14 +108,7 @@ include_once('header.php');
             </div>
         </form>
     </div>
-    <?php
-    $sql = "SELECT * FROM employee_info,leave_manage WHERE employee_info.id = leave_manage.employee_id";
-    $result = $conn->query($sql);
-    if (mysqli_num_rows($result) < 0) {
-        echo "No records found";
-    }
 
-    ?>
 
 </body>
 

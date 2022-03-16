@@ -166,7 +166,7 @@ include_once('header.php')
                         <td>$row[name]</td>
                         <td>$row[leave_dt_from]</td>
                         <td>$row[leave_dt_to]</td>
-                        <td>$row[reason]</td>
+                        <td>$row[type]</td>
                         <td>$row[notes]</td>
                         <td>$total_leave</td>
                         </tr>

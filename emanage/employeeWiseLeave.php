@@ -27,10 +27,10 @@ include('header.php');
             $new_name = true;
 
             if ($result) {
-                $total_leave = 0;
+
                 if ($result->num_rows > 0) {
                     $row_count = $result->num_rows;
-
+                    $total_leave = 0;
                     while ($row = $result->fetch_assoc()) {
 
                         $leave_taken = date_diff(
@@ -71,7 +71,7 @@ include('header.php');
                                 $row[leave_dt_to]
                                 </td>
                                 <td class='px-5 py-3 border border-1 border-secondary rounded'>
-                                $row[reason]
+                                $row[type]
                                 </td>
                                 <td class='px-5 py-3 border border-1 border-secondary rounded'>
                                 $row[notes]
@@ -83,11 +83,11 @@ include('header.php');
                             ";
 
                         $name = '';
-                    }
-                    if ($leave_taken == 0) {
-                        $total_leave = $leave_taken;
-                    } else {
-                        $total_leave = $total_leave + $leave_taken;
+                        if ($leave_taken == 0) {
+                            $total_leave = $leave_taken;
+                        } else {
+                            $total_leave = $total_leave + $leave_taken;
+                        }
                     }
                 } else {
                     echo $total_leave, " leave taken";
@@ -128,7 +128,7 @@ include('header.php');
             } else {
                 while ($row = $result->fetch_assoc()) {
 
-                    if ($row['reason'] == 'Medical Leave') {
+                    if ($row['type'] == 'Medical Leave') {
                         $leave_taken_medical = date_diff(
                             date_create($row['leave_dt_to']),
                             date_create($row['leave_dt_from'])
@@ -152,7 +152,7 @@ include('header.php');
                         $medical_leave +=
                             $leave_taken_medical;
                     }
-                    if ($row['reason'] == 'Casual Leave') {
+                    if ($row['type'] == 'Casual Leave') {
                         $leave_taken_casual = date_diff(
                             date_create($row['leave_dt_to']),
                             date_create($row['leave_dt_from'])
@@ -176,7 +176,7 @@ include('header.php');
                         $casual_leave +=
                             $leave_taken_casual;
                     }
-                    if ($row['reason'] == 'Festival leave') {
+                    if ($row['type'] == 'Festival leave') {
                         $leave_taken_festival = date_diff(
                             date_create($row['leave_dt_to']),
                             date_create($row['leave_dt_from'])
@@ -200,7 +200,7 @@ include('header.php');
                         $Festival_leave +=
                             $leave_taken_festival;
                     }
-                    if ($row['reason'] == 'Other') {
+                    if ($row['type'] == 'Other') {
                         $Other++;
                     }
                 }

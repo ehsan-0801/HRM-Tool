@@ -23,6 +23,7 @@ include('header.php');
             $result = $conn->query($sql);
 
             $new_name = true;
+            $new_name = true;
 
             if ($result) {
                 if ($result->num_rows > 0) {
@@ -30,7 +31,7 @@ include('header.php');
                     while ($row = $result->fetch_assoc()) {
 
                         if ($new_name) {
-                            $name = "<td class='px-5 py-3 border border-1 border-secondary rounded' rowspan='$row_count'>
+                            $name = "<td class='px-5 py-3 border border-1 border-secondary rounded fs-1 fw-bold text-center text-primary' rowspan='$row_count'>
                       $row[name]
                     </td>";
                             $new_name = false;

@@ -38,6 +38,16 @@
               <li><a class="dropdown-item" href="employeeLeaveDocument.php">Employee leave documents</a></li>
             </ul>
           </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Salary Management
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li><a class="dropdown-item" href="salaryEntry.php">Salary Entry</a></li>
+              <li><a class="dropdown-item" href="">Salary sheet</a></li>
+              <li><a class="dropdown-item" href="">Employee leave documents</a></li>
+            </ul>
+          </li>
 
       </div>
     </div>

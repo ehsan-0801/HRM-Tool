@@ -121,7 +121,7 @@ include('header.php');
             $medical_leave = 0;
             $casual_leave = 0;
             $Festival_leave = 0;
-            $Other = 0;
+            $extra = 0;
 
             if (mysqli_num_rows($result) < 0) {
                 echo "No records found";
@@ -201,7 +201,28 @@ include('header.php');
                             $leave_taken_festival;
                     }
                     if ($row['type'] == 'Other') {
-                        $Other++;
+                        $leave_taken_festival = date_diff(
+                            date_create($row['leave_dt_to']),
+                            date_create($row['leave_dt_from'])
+                        );
+                        $leave_taken_festival = 1 + $leave_taken_festival->format('%a');
+                        if ($row['leave_dt_from_fh'] == "Half")
+                            $leave_taken_festival -= 0.5;
+
+                        if ($row['leave_dt_to_fh'] == "Half")
+                            $leave_taken_festival -= 0.5;
+
+                        if ($row['leave_dt_to'] == $row['leave_dt_from']) {
+                            if ($row['leave_dt_from_fh'] == "Full" || $row['leave_dt_to_fh'] == "Full") {
+                                $leave_taken_festival = 1;
+                            } elseif ($row['leave_dt_from_fh'] == "Half" || $row['leave_dt_to_fh'] == "Half") {
+                                $leave_taken_festival = .5;
+                            }
+                        }
+
+
+                        $Festival_leave +=
+                            $leave_taken_festival;
                     }
                 }
                 $total_medical_leave = $total_medical_leave - $medical_leave;

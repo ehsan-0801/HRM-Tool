@@ -13,7 +13,7 @@ include_once('header.php');
     <form class="w-50 mx-auto p-sm-3 bg-custom
     " action="employeeJoiningCheck.php" method="POST">
 
-        <h2 class="text-center text-primary fw-bold">Employee Joining</h2>
+        <h2 class="text-center text-primary fw-bold">Employee Joining Info Update</h2>
         <div class="row mb-3">
             <label for="inputEmail3" class="col-sm-3 col-form-label text-light">Employee Name</label>
             <div class="col-sm-8">

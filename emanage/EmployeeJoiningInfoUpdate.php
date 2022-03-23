@@ -11,7 +11,7 @@ include_once('header.php');
 
 <div class="container my-md-5">
     <form class="w-50 mx-auto p-sm-3 bg-custom
-    " action="employeeJoiningCheck.php" method="POST">
+    " action="employeeJoiningUpdateCheck.php" method="POST">
 
         <h2 class="text-center text-primary fw-bold">Employee Joining Info Update</h2>
         <div class="row mb-3">

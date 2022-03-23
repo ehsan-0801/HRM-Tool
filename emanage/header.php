@@ -47,7 +47,7 @@
                             <li><a class="dropdown-item" href="employeeJoining.php">Employee Joining Info</a></li>
                             <li><a class="dropdown-item" href="employeeResigning.php">Employee Resigning Date</a></li>
                             <li><a class="dropdown-item" href="EmployeeJoiningInfoUpdate.php">Employee Joining Info Update</a></li>
-                            <li><a class="dropdown-item" href="">Salary sheet</a></li>
+                            <li><a class="dropdown-item" href="salarysheet.php">Salary sheet</a></li>
                             <li><a class="dropdown-item" href="">Employee leave documents</a></li>
                         </ul>
                     </li>

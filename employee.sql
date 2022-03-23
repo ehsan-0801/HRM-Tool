@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 22, 2022 at 06:10 PM
+-- Generation Time: Mar 23, 2022 at 06:11 PM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 7.4.27
 
@@ -79,7 +79,8 @@ INSERT INTO `designation` (`designation_id`, `designation_name`, `department`) V
 (10, 'Finance Manager', 'Finance'),
 (11, 'Marketing Managers', 'Marketing '),
 (12, 'HR administrator', 'Human Resource'),
-(13, 'Sales Manager', 'Sales');
+(13, 'Sales Manager', 'Sales'),
+(14, 'Senior Software Developer', 'Information Technology');
 
 -- --------------------------------------------------------
 
@@ -108,7 +109,8 @@ CREATE TABLE `employee_history` (
 INSERT INTO `employee_history` (`id`, `employee_id`, `designation_id`, `department`, `joining_date`, `ending_date`, `gross_salary`, `basic_salary`, `house_rent`, `medical_allowence`, `conveyance`) VALUES
 (1, 15, 2, 'Information Technology', '2020-01-01', '0000-00-00', '100000', '60000', '20000', '12000', '8000'),
 (2, 6, 12, 'Human Resource', '2021-01-01', '0000-00-00', '30000', '18000', '6000', '3600', '2400'),
-(4, 9, 6, 'Information Technology', '2019-03-01', '2022-04-15', '30000', '18000', '6000', '3600', '2400');
+(15, 9, 5, 'Information Technology', '2022-02-01', '0000-00-00', '32000', '19200', '6400', '3840', '2560'),
+(16, 6, 12, 'Human Resource', '2020-01-01', '0000-00-00', '35000', '21000', '7000', '4200', '2800');
 
 -- --------------------------------------------------------
 
@@ -270,13 +272,13 @@ ALTER TABLE `attendance`
 -- AUTO_INCREMENT for table `designation`
 --
 ALTER TABLE `designation`
-  MODIFY `designation_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `designation_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `employee_history`
 --
 ALTER TABLE `employee_history`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `employee_info`

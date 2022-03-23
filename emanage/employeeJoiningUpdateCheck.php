@@ -15,9 +15,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $conveyance = $_POST['conveyance'];
     $joining_date = $_POST['joining_date'];
     $ending_date =   '0000-00-00';
-    $sql = "UPDATE employee_history SET
-    employee_id = '$employee_id',  designation_id = '$designation_id', department = '$department', gross_salary = '$gross_salary',basic_salary = '$basic_salary',house_rent = '$house_rent', medical_allowence = '$medical_allowence', conveyance = '$conveyance',
-    joining_date = '$joining_date',ending_date = '$ending_date' WHERE employee_id = $employee_id AND joining_date= $ending_date ";
+    $sql = "UPDATE employee_history SET  designation_id = '$designation_id', department = '$department', gross_salary = '$gross_salary',basic_salary = '$basic_salary',house_rent = '$house_rent', medical_allowence = '$medical_allowence', conveyance = '$conveyance',
+    joining_date = '$joining_date', ending_date = '$ending_date' WHERE employee_id = '$employee_id'";
 
     if (mysqli_query($conn, $sql)) {
         echo "New record created successfully";

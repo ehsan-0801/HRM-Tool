@@ -19,10 +19,10 @@ include_once('header.php')
 
 
     <div class="container">
-        <form action="attendance_check.php" method="POST">
+        <form action="salaryInfocheck.php" method="POST">
 
             <div class="my-3">
-                MONTH: <input type="date" name="date" value="<?php echo date("Y-m-d"); ?>" class="text-center w-25">
+                MONTH: <input type="month" name="month" value="<?php echo date("Y-m"); ?>" class="text-center w-25">
             </div>
 
             <table class="table border border-2 ">
@@ -36,12 +36,13 @@ include_once('header.php')
                         <th class="bg-primary text-center border border-2" scope="col">CONVEYANCE</th>
                         <th class="bg-primary text-center border border-2" scope="col">BONUS</th>
                         <th class="bg-primary text-center border border-2" scope="col">INCENTIVE</th>
+                        <th class="bg-primary text-center border border-2" scope="col">PAYMENT CONDITION</th>
                     </tr>
                 </thead>
 
 
                 <?php
-                $sql = "SELECT employee_history.*, employee_info.name FROM employee_history INNER JOIN employee_info ON employee_history.employee_id = employee_info.id ";
+                $sql = "SELECT * FROM employee_history,employee_info WHERE employee_history.employee_id = employee_info.id";
                 $result = $conn->query($sql);
                 echo "
               <tbody>";
@@ -55,25 +56,38 @@ include_once('header.php')
                             $row[name]
                         </td>
                         <td class='border border-2 mx-auto '>
-                            <input type='text' name='$row[gross_salary]' class='bg-white text-center w-100' value='" . $row['gross_salary'] . "' >
+                            <input type='text' id='gross_salary' name='gross_salary[$row[id]]' class='bg-white text-center w-100' value='" . $row['gross_salary'] . "' >
                         </td>
                         <td class='border border-2 mx-auto'>
-                            <input type='text' name='$row[basic_salary]' class='bg-white text-center w-100' value='" . $row['basic_salary'] . "' >
+                            <input type='text' id='basic_salary' name='basic_salary[$row[id]]' class='bg-white text-center w-100' value='" . $row['basic_salary'] . "' >
                         </td>
                         <td class='border border-2 mx-auto'>
-                            <input type='text' name='$row[house_rent]' class='bg-white text-center w-100' value='" . $row['house_rent'] . "' >
+                            <input type='text' 
+                            id='house_rent'
+                            name='house_rent[$row[id]]' class='bg-white text-center w-100' value='" . $row['house_rent'] . "' >
                         </td>
                         <td class='border border-2 mx-auto'>
-                            <input type='text' name='$row[medical_allowence]' class='bg-white text-center w-100' value='" . $row['medical_allowence'] . "' >
+                            <input type='text' name='medical_allowence[$row[id]]'
+                            id='medical_allowence'
+                            class='bg-white text-center w-100' value='" . $row['medical_allowence'] . "' >
                         </td>
                         <td class='border border-2 mx-auto'>
-                            <input type='text' name='$row[conveyance]' class='bg-white text-center w-100' value='" . $row['conveyance'] . "' >
+                            <input type='text' name='conveyance[$row[id]]' class='bg-white text-center w-100' value='" . $row['conveyance'] . "' >
                         </td>
                         <td class='border border-2 mx-auto'>
-                            <input type='text' name='$row[conveyance]' class='bg-white text-center w-100'  >
+                            <input type='text' name='bonus[$row[id]]' 
+                            id='bonus'
+                            value='0'
+                            class='bg-white text-center w-100'  >
                         </td>
                         <td class='border border-2 mx-auto'>
-                            <input type='text' name='' class='bg-white text-center w-100' >
+                            <input type='text'
+                            id='incentive'
+                            value='0'
+                            name='incentive[$row[id]]' class='bg-white text-center w-100' >
+                        </td>
+                        <td class='border border-2 mx-auto'>
+                            <input type='checkbox' class='bg-secondary text-center mx-auto' value=$row[id] name='id[$row[id]]' >
                         </td>
                     </tr> 
               ";

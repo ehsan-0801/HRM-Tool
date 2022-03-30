@@ -5,13 +5,16 @@ include_once('db.php');
 // echo '</pre>';
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     foreach ($_POST['id'] as $key => $value) {
+        $leaveTaken = intval($_POST['extraLeaveTaken'][$key]);
+        $salaryReduced = round(intval($_POST['gross_salary'][$key]) / 30) * $leaveTaken;
 
         $total_Salary =
             intval($_POST['gross_salary'][$key])
             +
             intval($_POST['incentive'][$key])
             +
-            intval($_POST['bonus'][$key]);
+            intval($_POST['bonus'][$key])
+            - $salaryReduced;
 
 
         // echo $total_Salary[$key];

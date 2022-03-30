@@ -16,8 +16,6 @@ include_once('header.php')
 </head>
 
 <body>
-
-
     <div class="container">
         <form action="salaryInfocheck.php" method="POST">
 
@@ -36,6 +34,7 @@ include_once('header.php')
                         <th class="bg-primary text-center border border-2" scope="col">CONVEYANCE</th>
                         <th class="bg-primary text-center border border-2" scope="col">BONUS</th>
                         <th class="bg-primary text-center border border-2" scope="col">INCENTIVE</th>
+                        <th class="bg-primary text-center border border-2" scope="col">EXTRA LEAVE TAKEN</th>
                         <th class="bg-primary text-center border border-2" scope="col">PAYMENT CONDITION</th>
                     </tr>
                 </thead>
@@ -85,6 +84,12 @@ include_once('header.php')
                             id='incentive'
                             value='0'
                             name='incentive[$row[id]]' class='bg-white text-center w-100' >
+                        </td>
+                        <td class='border border-2 mx-auto'>
+                            <input type='text'
+                            id='extraLeaveTaken'
+                            value=''
+                            name='extraLeaveTaken[$row[id]]' class='bg-white text-center w-100' >
                         </td>
                         <td class='border border-2 mx-auto'>
                             <input type='checkbox' class='bg-secondary text-center mx-auto' value=$row[id] name='id[$row[id]]' >

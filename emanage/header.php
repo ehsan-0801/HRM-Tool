@@ -37,6 +37,8 @@
                             <li><a class="dropdown-item" href="employeeLeaveApplication.php">Leave Application</a></li>
                             <li><a class="dropdown-item" href="employeeLeaveDocument.php">Employee leave documents</a>
                             </li>
+                            <li><a class="dropdown-item" href="employeeLeaveInfo.php">Employee Leave Info</a>
+                            </li>
                         </ul>
                     </li>
                     <li class="nav-item dropdown">
@@ -50,6 +52,7 @@
                             <li><a class="dropdown-item" href="salarysheet.php">Salary sheet</a></li>
                             <li><a class="dropdown-item" href="salaryInformation.php">Salary Information</a></li>
                             <li><a class="dropdown-item" href="salaryInformationIndividual.php">Salary Information Individual</a></li>
+                            <li><a class="dropdown-item" href="employeePaymentInfo.php">Employee Payment Info</a></li>
                         </ul>
                     </li>
 

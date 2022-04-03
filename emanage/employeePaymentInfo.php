@@ -17,7 +17,7 @@ include_once('header.php')
     <section class="container">
 
         <div class="my-5 mx-auto p-3 border border-1 border-secondary rounded w-50 bg-secondary">
-            <form action="employeeLeaveInfoCheck.php" method="POST">
+            <form action="employeePaymentInfoCheck.php" method="POST">
                 <h2 class="my-2 fs-1 fw-bold text-primary text-center">Check Leave Information</h2>
                 <div class="mb-3 row">
                     <label for="staticEmail" class="col-sm-2 col-form-label">Name</label>
@@ -41,7 +41,7 @@ include_once('header.php')
                 <div class="mb-3 row">
                     <label for="inputPassword" class="col-sm-2 col-form-label">Month:</label>
                     <div class="col-sm-10">
-                        <input type="month" class="w-100 p-2 border border-3 border-light rounded" name="fromDate" id="" value="<?php echo date("Y-m"); ?>">
+                        <input type="month" class="w-100 p-2 border border-3 border-light rounded" name="month" id="" value="<?php echo date("Y-m"); ?>">
                     </div>
                 </div>
                 <div class="row">

@@ -33,8 +33,7 @@ include_once('header.php');
                         }
                     }
                     ?>
-                </select> , I wanna take leave from <input class="p-1 border border-1 border-light rounded" type="date"
-                    name="dateFrom" id="">
+                </select> , I wanna take leave from <input class="p-1 border border-1 border-light rounded" type="date" name="dateFrom" id="">
                 <select name="leave_dt_from_fh" class="p-1 border border-1 border-light rounded">
                     <option selected></option>
                     <option value="Half">half</option>
@@ -47,16 +46,14 @@ include_once('header.php');
                 </select>
                 as my
                 <select name="type" class="p-1 border border-1 border-light rounded">
-                    <option selected></option>
-                    <option value=""></option>
+                    <option selected disabled></option>
                     <option value="Casual Leave">Casual Leave</option>
                     <option value="Medical Leave">Medical Leave</option>
                     <option value="Paid Leave">Festival Leave</option>
                     <option value="Other">Other</option>
                 </select>
                 for the reason of
-                <textarea name="notes" class="form-control" placeholder="Write the reason here" id="floatingTextarea2"
-                    style="height: 100px"></textarea>
+                <textarea name="notes" class="form-control" placeholder="Write the reason here" id="floatingTextarea2" style="height: 100px"></textarea>
                 It would be kind enough if you grant me a leave.
                 <br>
                 Regards

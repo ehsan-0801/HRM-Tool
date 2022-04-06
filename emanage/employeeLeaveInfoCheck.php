@@ -21,13 +21,19 @@ include('header.php');
             $dateFrom = $_POST['fromDate'];
             $dateTo = $_POST['toDate'];
             // echo $id;
+
             $sql = "SELECT * FROM leave_manage,employee_info WHERE leave_manage.employee_id = '$id' AND leave_manage.employee_id = employee_info.id AND leave_dt_from BETWEEN '$dateFrom' AND '$dateTo'";
+
             $result = $conn->query($sql);
+
+            $sql2 = "SELECT count(*)/18 as earned_leave FROM attendance WHERE employee_id = '$id'";
+
+            $earned_leaves = floor(mysqli_fetch_array($conn->query($sql2))['earned_leave']);
+
 
             $new_name = true;
 
             if ($result) {
-
                 if ($result->num_rows > 0) {
                     $row_count = $result->num_rows;
                     $total_leave = 0;
@@ -109,6 +115,9 @@ include('header.php');
         ?>
 
     </table>
+    <div>
+        <h2 class="text-primary text-center">Earned Leave: <span><?php echo $earned_leaves  ?></span></h2>
+    </div>
     <table class="table table-info table-striped table-hover my-5 w-50 mx-auto">
 
         <tbody>
@@ -257,6 +266,13 @@ include('header.php');
 
         </tbody>
     </table>
+    <?php
+
+    ?>
+    <div>
+
+    </div>
+
 </div>
 <?php
 include('footer.php')

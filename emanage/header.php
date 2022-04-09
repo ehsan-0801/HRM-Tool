@@ -35,6 +35,7 @@
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <li><a class="dropdown-item" href="leavePermit.php">Leave Permit</a></li>
                             <li><a class="dropdown-item" href="employeeLeaveApplication.php">Leave Application</a></li>
+                            <li><a class="dropdown-item" href="ApplicationList.php">Application List</a></li>
                             <li><a class="dropdown-item" href="employeeLeaveDocument.php">Employee leave documents</a>
                             </li>
                             <li><a class="dropdown-item" href="employeeLeaveInfo.php">Employee Leave Info</a>
